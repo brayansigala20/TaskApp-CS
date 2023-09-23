@@ -1,8 +1,7 @@
 import Users from "../models/Users.js"
 import idGen from '../helpers/idGen.js'
 import genToken from "../helpers/jsonWebToken.js"
-
-
+import { emailDeliveryAuth } from "../helpers/emailDelivery.js"
 const logUp = async (req, res) => {
     const { email, password, name } = req.body
     const userFind = await Users.findOne({ email })
@@ -13,8 +12,10 @@ const logUp = async (req, res) => {
         }
         const user = await new Users({ email, password, name })
         user.token = idGen()
-        const newUser = await user.save()
-        res.json(newUser)
+        const userdb = await user.save()
+        res.json({ msg: "Se ah envido token de confirmacion a tu correo!!" })
+
+        emailDeliveryAuth(userdb)
     }
     catch (error) {
         console.log(error)

@@ -25,14 +25,22 @@ const ReportSchema = mongoose.Schema({
         enum: ["baja", "media", "alta"],
         require: true,
     },
-    proyect: {
+    source: {
+        type: String,
+        require:true
+    },
+    serie:{
+        type: String,
+        require:false
+    },
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Proyecto"
+        ref: 'Usuario',
     }
 },
     {
         timestamps: true
     })
 
-    const Report = mongoose.model('Report', ReportSchema)
-    export default Report
+const Reports = mongoose.model('Reports', ReportSchema)
+export default Reports
