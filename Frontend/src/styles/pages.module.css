@@ -1,0 +1,70 @@
+.report-container {
+  width: 300px;
+  height: 58px;
+  border-radius: 14px;
+  background: #20212c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+.report-container--info {
+  margin-left: 10px;
+  width: 200px;
+}
+.report-container--butons {
+  margin-left: 30px;
+  display: flex;
+  gap: 8px;
+}
+.report-items--priority {
+  width: 42px;
+  height: 4px;
+  transform: rotate(90deg);
+  border-radius: 2px;
+  background: #ef9712;
+  margin-right: -17px;
+}
+.table-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50px 90% ;
+}
+.table-container h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin: 0 5px 0 5px;
+  background-color: #4a4b52;
+  border-radius: 9px;
+  height: 25px;
+}
+.table-container__item {
+  overflow: scroll;
+}
+.file-container--report {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  border: 3px solid #4a4b52;
+  height: 52px;
+  margin: 5px;
+}
+.file-container--report span {
+  color: #828388;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.btn-success {
+  background-color: red !important;
+  border-radius: 9px !important;
+}
+.btn-canceled {
+  background-color: #4a4b52 !important;
+  border-radius: 9px !important;
+}
