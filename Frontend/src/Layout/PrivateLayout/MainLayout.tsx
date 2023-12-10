@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const MainLayout: any = () => {
   const { userData, loading } = useAuth()
+
   if (loading) return
   return (
     userData?._id ? (
@@ -18,7 +19,7 @@ const MainLayout: any = () => {
           <nav className=" px-3 w-48">
             <NavBar />
           </nav>
-          <main className=" flex flex-1 px-10 py-5 h-full overflow-scroll ">
+          <main className=" flex flex-1 px-10 py-5 h-full overflow-scroll">
             <div>
               <ToastContainer
                 theme="dark"

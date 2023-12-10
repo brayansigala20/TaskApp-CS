@@ -10,7 +10,6 @@ const Report = () => {
   useEffect(() => {
     reportsDispatch(id)
   }, [])
-  console.log(fileReport?.source?.split('.')[1])
   const { _id, name, source, description, priority, date, serie }: any = fileReport
   const nav = useNavigate()
   return (

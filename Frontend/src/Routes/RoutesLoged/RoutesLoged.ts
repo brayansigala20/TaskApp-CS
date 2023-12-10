@@ -1,11 +1,10 @@
 import { lazy } from 'react'
 import { Report } from "../../pages";
 import { IRoutes } from "../intrefaces";
-import dash from '../../../public/icons/dash.png';
-import document from '../../../public/icons/document.png';
-import add from '../../../public/icons/add.png';
 import { Home } from '../../pages'
-// const HomeLazy = lazy(()=> import(/* webpackChunkName: "LazyLoadHome" */'../../pages/home')) 
+import dash from '/icons/dash.png';
+import document from '/icons/document.png';
+import add from '/icons/add.png';
 const DashLazy = lazy(() => import(/* webpackChunkName: "LazyLoadDashboard" */'../../pages/dashboard'))
 const NewReportLazy = lazy(() => import(/* webpackChunkName: "LazyLoadNewReport" */'../../pages/newReport'))
 export const routesLoged: IRoutes[] = [

@@ -3,7 +3,7 @@ import { IPropsForm } from "./interfaces";
 import style from '../../styles/loged.module.css'
 const ReportForm = ({ initialValues, Component, req }: IPropsForm) => {
     return (
-        <div className="  p-5 min-h-full overflow-scroll">
+        <div className=" w-full mt-3  ">
             <Formik
                 initialValues={initialValues}
                 validate={values => {
@@ -33,12 +33,11 @@ const ReportForm = ({ initialValues, Component, req }: IPropsForm) => {
                     return errors;
                 }}
                 onSubmit={(values) => {
-                    console.log(values)
                     req(values)
                 }}
             >
                 {({ isSubmitting }) => (
-                    <div className={`${style.formikContainer} p-6`}>
+                    <div className={`${style.formContainer}`}>
                         <Component isSubmitting={isSubmitting} />
                     </div>
                 )}

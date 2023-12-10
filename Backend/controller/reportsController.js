@@ -1,16 +1,16 @@
 import Reports from "../models/Reports.js"
 const create = async (req, res) => {
-    const { name, description, priority, user, serie } = req.body
+    const { name, description, priority, user, serie, date, state } = req.body
     try {
-        const report = await new Reports({ name, description, priority, source: req.file.filename, user, serie })
+        const report = await new Reports({ name, description, priority, source: req.file.filename, user, serie, date, state })
         await report.save()
-        res.json({msg:'Nuevo Folio creado'})
+        res.json({ msg: 'Nuevo Folio creado' })
     } catch (error) {
         console.log(error)
     }
 }
 const getsReports = async (req, res) => {
-    const reports = await Reports.find().where("user").equals(req.user).select("-createdAt -updatedAt -user ")
+    const reports = await Reports.find().where("user").equals(req.user).select("")
     res.json(reports)
 }
 const getReport = async (req, res) => {
@@ -20,8 +20,8 @@ const getReport = async (req, res) => {
 }
 const stateReport = async (req, res) => {
     const { id } = req.params
-    const report = await Reports.findById(id).select("-createdAt -updatedAt -user ")
-    const { name, description, source, state, date, priority,serie } = req.body
+    const report = await Reports.findById(id).select(" ")
+    const { name, description, source, state, date, priority, serie } = req.body
     try {
         report.name = name || report.name
         report.description = description || report.description

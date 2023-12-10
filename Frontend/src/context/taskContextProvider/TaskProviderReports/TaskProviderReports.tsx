@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction, createContext, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction, createContext, useEffect, useState } from "react";
 import { useAuth } from "../../../hooks";
 import { clientAxios, config } from "../../../configAxios";
 import { useNavigate } from "react-router-dom";
@@ -46,7 +46,7 @@ const TaskProviderReports = ({ children }: ItaskArgs) => {
 
     const nav = useNavigate()
     const newReportDispatch = async (data: any) => {
-        const { name, description, date, priority, source, serie } = data
+        const { name, description, date, priority, source, serie,state } = data
         data.user = userData._id
         const formData = new FormData()
         formData.append('name', name)
@@ -55,6 +55,7 @@ const TaskProviderReports = ({ children }: ItaskArgs) => {
         formData.append('priority', priority)
         formData.append('source', source)
         formData.append('user', data.user)
+        formData.append('state',state)
         formData.append('serie', serie)
         try {
             const res = await clientAxios.post('/reports', formData)
@@ -68,14 +69,12 @@ const TaskProviderReports = ({ children }: ItaskArgs) => {
     }
     const getReportDispatch = async () => {
         const data: any = await clientAxios.get('/reports', config())
+        console.log({data:data.data})
         try {
             setReports(data.data)
             setLoadingSpinner(false)
         } catch (error) {
             console.log(error)
-        }
-        if (data.status !== 200 || data.data.msg === 'Token no encontrado!!') {
-            setLoadingSpinner(true)
         }
     }
     const reportsDispatch = async (id: string | undefined) => {
@@ -103,6 +102,9 @@ const TaskProviderReports = ({ children }: ItaskArgs) => {
     const cleanState = () => {
         setReports([])
     }
+    useEffect(() => {
+        getReportDispatch()
+      }, [])
     return (
         <TaskContext.Provider
             value={{

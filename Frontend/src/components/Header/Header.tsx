@@ -16,7 +16,8 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <div className=" p-4 flex w-full justify-between items-center">
+    <div
+      className=" p-4 flex w-full justify-between items-center">
       <div className=" flex text-2xl gap-3">
         <div className="flex">
           <button className="" onClick={toggleMenu}>
